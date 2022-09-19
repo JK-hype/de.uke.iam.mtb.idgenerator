@@ -21,10 +21,10 @@ public class IdController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "<id>"),
             @ApiResponse(responseCode = "400", description = "Either first name, last name or birthday are null or empty") })
-    @GetMapping("/id_generator/{firstName}/{lastName}/{birthday}")
+    @GetMapping("/id_generator/{first_name}/{last_name}/{birthday}")
     public ResponseEntity<String> generateId(
-            @Parameter(description = "Patient's first name. Cannot be null or empty", required = true) @PathVariable String firstName,
-            @Parameter(description = "Patient's last name. Cannot be null or empty", required = true) @PathVariable String lastName,
+            @Parameter(description = "Patient's first name. Cannot be null or empty", required = true) @PathVariable("first_name") String firstName,
+            @Parameter(description = "Patient's last name. Cannot be null or empty", required = true) @PathVariable("last_name") String lastName,
             @Parameter(description = "Patient's birthday. Cannot be null. Expects birthday in format yyyy-mm-dd", required = true) @PathVariable Date birthday) {
         HttpStatus status;
         if (firstName != null && lastName != null && birthday != null && !firstName.isEmpty() && !lastName.isEmpty()) {
