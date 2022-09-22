@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import de.uke.iam.mtb.idgenerator.util.MtbIdCreator;
+import de.uke.iam.mtb.idgenerator.util.IdCreator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -32,6 +32,6 @@ public class IdController {
         } else {
             status = HttpStatus.BAD_REQUEST;
         }
-        return new ResponseEntity<String>(MtbIdCreator.createId(firstName, lastName, birthday), status);
+        return new ResponseEntity<String>(IdCreator.createId(firstName, lastName, birthday), status);
     }
 }
